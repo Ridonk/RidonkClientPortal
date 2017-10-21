@@ -1,0 +1,25 @@
+{
+    "name": "Client Portal",
+    "description": "An open source solution for Client Management",
+    "require": {
+        "php": ">=7",
+        "phpunit/phpunit": "6.5.x-dev"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "George Dunbar",
+            "email": "me@georgeddunbar.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ridonk\\ClientPortal\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ridonk\\": "Tests/"
+        }
+    }
+}
