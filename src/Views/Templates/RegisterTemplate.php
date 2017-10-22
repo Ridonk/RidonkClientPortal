@@ -1,5 +1,5 @@
 <main role="main">
-    <form action="<?php echo $this->controller; ?>" method="post"> <?php // TODO: link controller ?>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <label for="firstname">First Name: </label>
         <input name="firstname" id="firstname" type="text" placeholder="Jane" required><br>
         <label for="lastname">Last Name: </label>
@@ -11,3 +11,4 @@
         <input type="submit" name="submit" value="Register Now">
     </form>
 </main>
+<?php

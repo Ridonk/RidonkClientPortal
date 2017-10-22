@@ -1,6 +1,4 @@
 **/scripts/
-**/Project/config/
-
 
 # Created by https://www.gitignore.io/api/vagrant,composer,phpstorm
 
@@ -81,3 +79,5 @@ fabric.properties
 .vagrant/
 
 # End of https://www.gitignore.io/api/vagrant,composer,phpstorm
+/Docs/
+phpmyadmin

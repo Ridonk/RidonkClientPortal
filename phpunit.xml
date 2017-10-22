@@ -2,6 +2,8 @@
     <testsuites>
         <testsuite name="ClientPortal">
             <directory suffix="Test.php">Tests/Views</directory>
+            <directory suffix="Test.php">Tests/Models</directory>
+            <directory suffix="Test.php">Tests/Controllers</directory>
         </testsuite>
     </testsuites>
 </phpunit>

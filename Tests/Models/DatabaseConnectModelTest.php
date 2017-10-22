@@ -12,7 +12,7 @@ use Ridonk\ClientPortal\Models\DatabaseConnect;
 
 class DatabaseConnectModelTest extends TestCase {
     public function testConnectedIsTrueAfterConnection() {
-        $file = __DIR__ . '\..\..\Project\config\db-config.ini';
+        $file = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Project' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'db-config.ini';
         $dbh = new DatabaseConnect($file);
         $this->assertTrue($dbh->getConnected());
     }

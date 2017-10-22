@@ -3,15 +3,15 @@
 namespace Ridonk\ClientPortal\Views;
 
 class RegisterView {
-    private $model;
-    private $controller;
-    public function __construct() {
+    protected $controller;
+    public function __construct($controller) {
         include('Templates/RegisterTemplate.php');
+        $this->setController($controller);
     }
-    public function registerModel($databaseNewUser) {
-        $this->model = $databaseNewUser;
+    private function setController($controller) {
+        $this->controller=$controller;
     }
-    public function registerController($processRegisterForm) {
-        $this->controller = $processRegisterForm;
+    private function getController() {
+        return $this->controller;
     }
 }

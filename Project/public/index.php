@@ -14,13 +14,9 @@ if(isset($_POST['start'])) {
     echo '<pre>';
     print_r($_POST);
     echo '</pre>';
-    $register = new Views\RegisterView();
-    if(isset($_POST['firstname'])) {
-        /*
-         * If the user registers, create a new registration model, connect with a new database model and pass the
-         * registration model the post data.
-         */
-        $register->registerModel(new Models\DatabaseNewUser(new Models\DatabaseConnect(),$_POST)); // TODO: Unit test!!
+    $register = new \Ridonk\ClientPortal\Controllers\NewUserController();
+    if (isset($_POST['firstname'])) {
+        $register->addNewUser($_POST);
     }
 }
 ?>

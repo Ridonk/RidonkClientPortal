@@ -12,7 +12,8 @@ namespace Ridonk\ClientPortal\Models;
 class DatabaseNewUser {
     private $dbh;
     private $userData;
-    private $username;
+    private $firstname;
+    private $lastname;
     private $password;
     private $email;
     private $status;
@@ -36,19 +37,26 @@ class DatabaseNewUser {
      * @return bool
      */
     public function insertNewUser() {
-        $stmt = $this->dbh->prepare("INSERT INTO client_db (username, hashed_password, email, status) VALUES (:username, :password, :email, :status)");
-        $stmt->bindValue(":username", $this->username);
+        echo 'Preparing statement.';
+        $stmt = $this->dbh->prepare("INSERT INTO client_db (firstname, lastname, password, email, status) VALUES (:firstname, :lastname, :password, :email, :status)");
+        $stmt->bindValue(":firstname", $this->firstname);
+        $stmt->bindValue(":lastname", $this->lastname);
         $stmt->bindValue(":password", $this->password);
         $stmt->bindValue(":email", $this->email);
         $stmt->bindValue(":status", $this->status);
-        $this->username = $this->userData['username'];
+        $this->firstname = $this->userData['firstname'];
+        $this->lastname = $this->userData['lastname'];
         $this->password = password_hash($this->userData['password'], PASSWORD_DEFAULT);
         $this->email = $this->userData['email'];
         $this->status = $this->userData['status'];
         $stmt->execute();
-        if ($stmt->rowCount() > 0) {
+        if ($stmt->rowCount() > 0 && !$stmt->errorCode()) {
+            echo $stmt->errorCode();
             return true;
-        } else return false;
+        } else {
+            echo $stmt->errorCode();
+            return false;
+        }
     }
 
     public function getErrorCode() {
