@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "abc3cfce72afd5433e4c662425182ea9",
+    "content-hash": "147f8b9da1056dd63a4526c310ccf9f7",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -61,38 +61,86 @@
             "time": "2017-07-22T11:58:36+00:00"
         },
         {
-            "name": "myclabs/deep-copy",
-            "version": "1.6.1",
+            "name": "joshcam/mysqli-database-class",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
+                "url": "https://github.com/joshcam/PHP-MySQLi-Database-Class.git",
+                "reference": "6e13d5a82d2ac0eb71c2a2a30681ecea7e21e8f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
-                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+                "url": "https://api.github.com/repos/joshcam/PHP-MySQLi-Database-Class/zipball/6e13d5a82d2ac0eb71c2a2a30681ecea7e21e8f4",
+                "reference": "6e13d5a82d2ac0eb71c2a2a30681ecea7e21e8f4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "MysqliDb.php",
+                    "dbObject.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Campbell",
+                    "email": "josh.lee.campbell@gmail.com",
+                    "homepage": "https://github.com/joshcam",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Alexander V. Butenko",
+                    "email": "a.butenka@gmail.com",
+                    "homepage": "http://smarttechdo.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP MySQL Wrapper and object mapper which utilizes MySQLi and prepared statements",
+            "time": "2017-10-09T12:56:37+00:00"
+        },
+        {
+            "name": "myclabs/deep-copy",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/myclabs/DeepCopy.git",
+                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
+                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "doctrine/collections": "1.*",
-                "phpunit/phpunit": "~4.1"
+                "doctrine/collections": "^1.0",
+                "doctrine/common": "^2.6",
+                "phpunit/phpunit": "^4.1"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "DeepCopy\\": "src/DeepCopy/"
-                }
+                },
+                "files": [
+                    "src/DeepCopy/deep_copy.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Create deep copies (clones) of your objects",
-            "homepage": "https://github.com/myclabs/DeepCopy",
             "keywords": [
                 "clone",
                 "copy",
@@ -100,7 +148,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-04-12T18:52:22+00:00"
+            "time": "2017-10-19T19:58:43+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -669,12 +717,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3653ae87dbf0b0b7ab6b54fd859bb4fce3d458db"
+                "reference": "1435f8a06ad9013f587ca04c3e160b236814e915"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3653ae87dbf0b0b7ab6b54fd859bb4fce3d458db",
-                "reference": "3653ae87dbf0b0b7ab6b54fd859bb4fce3d458db",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1435f8a06ad9013f587ca04c3e160b236814e915",
+                "reference": "1435f8a06ad9013f587ca04c3e160b236814e915",
                 "shasum": ""
             },
             "require": {
@@ -745,7 +793,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-10-15T06:17:02+00:00"
+            "time": "2017-10-22T03:56:45+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1460,6 +1508,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "joshcam/mysqli-database-class": 20,
         "phpunit/phpunit": 20
     },
     "prefer-stable": false,

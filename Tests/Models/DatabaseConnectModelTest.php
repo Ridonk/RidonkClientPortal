@@ -14,6 +14,7 @@ class DatabaseConnectModelTest extends TestCase {
     public function testConnectedIsTrueAfterConnection() {
         $file = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Project' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'db-config.ini';
         $dbh = new DatabaseConnect($file);
-        $this->assertTrue($dbh->getConnected());
+        $this->assertTrue($dbh->getConnected(), "Should be connected ");
+        $this->assertNotFalse($dbh->getConnection());
     }
 }

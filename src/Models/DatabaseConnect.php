@@ -2,7 +2,17 @@
 
 namespace Ridonk\ClientPortal\Models;
 
+use MysqliDb;
 
+
+/**
+ * Class DatabaseConnect
+ *
+ * DatabaseConnect is a model for instantiating a MysqliDb connection and storing it within itself.
+ * The Connection can be accessed using DatabaseConnect::getConnection() or MysqliDb::getInstance()
+ *
+ * @package Ridonk\ClientPortal\Models
+ */
 class DatabaseConnect {
     private $driver = "mysql";
     private $host = "localhost";
@@ -35,22 +45,25 @@ class DatabaseConnect {
      */
     protected function connect($file) {
         if ($settings = parse_ini_file($file, TRUE)) {
-            $this->driver = $settings['database']['driver'];
+            $this->driver = $settings['database']['driver']; // TODO: Deprecated
             $this->host = $settings['database']['host'];
             $this->port = $settings['database']['port'];
             $this->schema = $settings['database']['schema'];
             $this->username = $settings['database']['username'];
             $this->password = $settings['database']['password'];
         }
-        $dsn = $this->driver . ':host=' . $this->host . ';port=' . $this->port . ';dbname=' . $this->schema;
-        try {
-            $this->connection = new \PDO($dsn, $this->username, $this->password);
-        } catch (\PDOException $e) {
-            die($e->getMessage());
+        // legacy PDO dsn - maybe include as an alternative to MysqliDb by scanning the driver setting?
+        // $dsn = $this->driver . ':host=' . $this->host . ';port=' . $this->port . ';dbname=' . $this->schema;
+        if ($this->connection = new MysqliDb($this->host, $this->username, $this->password, $this->schema)) {
+            $this->connected = TRUE;
+        } else {
+            $this->connected = FALSE;
         }
-        $this->connected = TRUE;
     }
 
+    /**
+     * @return bool
+     */
     public function getConnected() {
         return $this->connected;
     }
