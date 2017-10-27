@@ -3,10 +3,14 @@ This project is an open source client management system. Installation is as easy
 
 Features currently available:
 * Database Connections from an .ini file
+* Safe and secure session management
 
 Planned Features:
-* Safe and secure session management
 * Easily extensible classes to add new functionality
+* Status dependent pages
+    * Admin views
+    * Active cWlient views
+    * Pending client views
 * Option to store client details hashed and salted
 * Easy to manage a full list of clients
     * Sort and filter by client status (IE: pending, approved, etc)
