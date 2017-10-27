@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php');
 /**
  * Created by PhpStorm.
  * User: georgeddunbar
@@ -13,11 +14,14 @@ session_start();
     <title>CP Login</title>
     <?php
     if (isset($_POST['email']) && isset($_POST['password'])) {
-        echo 'Checking login...<br />';
-        echo 'Login script not written yet.<br />'; // TODO: Write login controller and include
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['login'] = '';
-        header('Location:index.php');
+        $loginController = new \Ridonk\ClientPortal\Controllers\Login($_POST);
+        if ($loginController->getErrorMessage() == '') {
+            echo $loginController->getErrorMessage();
+        } else {
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['login'] = '';
+            header('Location:index.php');
+        }
     } else {
         $message = 'Please enter your email and password below or click "Register for service" below the form.<br />';
     }

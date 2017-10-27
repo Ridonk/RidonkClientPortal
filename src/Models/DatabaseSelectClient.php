@@ -27,6 +27,22 @@ class DatabaseSelectClient {
     }
 
     /**
+     * @param $email
+     * @param \PDO $connect
+     * @return bool
+     */
+    public static function getPasswordWhereEmailMatches($email, \PDO $connect) {
+        $sql = 'SELECT password FROM client_db WHERE email = :email';
+        $stmt = $connect->prepare($sql);
+        $results = $stmt->execute(array(':email' => $email));
+        if ($stmt->rowCount() > 0) {
+            return $results['password'];
+        } else {
+            return FALSE;
+        }
+    }
+
+    /**
      * @param \PDO $connect
      * @return array|bool
      */

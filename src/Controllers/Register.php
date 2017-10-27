@@ -12,7 +12,8 @@ use Ridonk\ClientPortal\Models\Database;
 use Ridonk\ClientPortal\Models\DatabaseNewClient;
 
 class Register {
-    protected $database; // Database model
+    protected $databaseModel; // Database model
+    protected $registerView;
     protected $userData; // POST data from registration form
     protected $errorMessage = ''; // Initialize no message
     protected $errorCode = 0; // Error code
@@ -23,7 +24,7 @@ class Register {
      */
     public function __construct(array $formData) {
         $this->userData = $formData;
-        $this->database = $this->connectToDatabase();
+        $this->databaseModel = $this->connectToDatabase();
         $this->userData['password'] = password_hash($this->userData['password'], PASSWORD_DEFAULT);
         $this->errorCode = $this->addNewUser();
         $this->handleErrorCode(); // Checks to see if error code is 0, anything else gets a special message.
@@ -34,7 +35,7 @@ class Register {
     }
 
     private function addNewUser() {
-        if (DatabaseNewClient::insertNewClient($this->userData, 'register.php', $this->database->getConnect())) {
+        if (DatabaseNewClient::insertNewClient($this->userData, 'register.php', $this->databaseModel->getConnect())) {
             return 0;
         } else {
             return 1; // TODO: Add error handling to DatabaseNewClient

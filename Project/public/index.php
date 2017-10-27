@@ -18,7 +18,8 @@ require_once (__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' 
 </head>
 <body>
 <?php
-echo 'Index.php';
+echo '<h1>The index</h1>';
+echo '<a href="logout.php">Logout</a>';
 ?>
 </body>
 </html>
