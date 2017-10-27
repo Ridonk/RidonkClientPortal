@@ -20,9 +20,13 @@ class Login {
     public function __construct(array $formData) {
         $this->databaseModel = new Database();
         $this->email = $formData['email'];
-        $this->password = password_hash($formData['password'], PASSWORD_DEFAULT);
+        $this->password = $formData['password'];
+    }
+
+    public function checkLogin() {
         if (DatabaseSelectClient::checkIfEmailExists($this->email, $this->databaseModel->getConnect())) {
             if ($this->checkPassword()) {
+                $this->errorMessage = '';
                 return TRUE;
             } else {
                 $this->errorMessage = 'Password did not match.';
@@ -36,7 +40,11 @@ class Login {
 
     private function checkPassword() {
         if ($databasePassword = DatabaseSelectClient::getPasswordWhereEmailMatches($this->email, $this->databaseModel->getConnect())) {
-            return (password_verify($this->password, $databasePassword));
+            if (password_verify($this->password, $databasePassword)) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
         } else {
             return FALSE;
         }

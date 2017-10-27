@@ -20,6 +20,9 @@ if (!isset($_SESSION['login'])) {
             echo $newUserController->getErrorMessage();
         } else {
             echo 'User has been added!';
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['login'] = '';
+            header("Location: index.php");
         }
     }
 }

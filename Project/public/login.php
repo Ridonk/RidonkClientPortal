@@ -15,7 +15,7 @@ require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
     <?php
     if (isset($_POST['email']) && isset($_POST['password'])) {
         $loginController = new \Ridonk\ClientPortal\Controllers\Login($_POST);
-        if ($loginController->getErrorMessage() == '') {
+        if (!$loginController->checkLogin()) {
             echo $loginController->getErrorMessage();
         } else {
             $_SESSION['email'] = $_POST['email'];
