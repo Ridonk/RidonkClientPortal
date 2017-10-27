@@ -8,12 +8,12 @@
 
 namespace Ridonk\ClientPortal\Models;
 
-
 class DatabaseNewClient {
     /**
      * @param array $userData
      * @param string | bool $callback
      * @param \PDO $connect
+     * @return bool
      */
     public static function insertNewClient(Array $userData, $callback = FALSE, \PDO $connect) {
         /*
@@ -22,6 +22,9 @@ class DatabaseNewClient {
         if (DatabaseSelectClient::checkIfEmailExists($userData['email'], $connect)) {
             if ($callback != FALSE) {
                 header('Location:' . $callback);
+            } else {
+                echo "Email exists.";
+                return FALSE;
             }
         } else {
             /*
@@ -32,16 +35,19 @@ class DatabaseNewClient {
             $firstname = $userData['firstname'];
             $lastname = $userData['lastname'];
             $email = $userData['email'];
-            $password = password_hash($userData['password'], PASSWORD_DEFAULT);
+            $password = $userData['password'];
             $stmt->bindParam('firstname', $firstname);
             $stmt->bindParam('lastname', $lastname);
             $stmt->bindParam('email', $email);
             $stmt->bindParam('password', $password);
             try {
                 $stmt->execute();
+                return TRUE;
             } catch (\PDOException $e) {
-                die($e->getMessage());
+                echo $e->getMessage();
+                return FALSE;
             }
         }
+        return TRUE;
     }
 }

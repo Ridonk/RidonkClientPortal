@@ -14,12 +14,12 @@ session_start();
     <?php
     if (isset($_POST['email']) && isset($_POST['password'])) {
         echo 'Checking login...<br />';
-        echo 'Login script not written yet.<br />';
+        echo 'Login script not written yet.<br />'; // TODO: Write login controller and include
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['login'] = '';
         header('Location:index.php');
     } else {
-        $message = 'Email or password not supplied. Please try again.<br />';
+        $message = 'Please enter your email and password below or click "Register for service" below the form.<br />';
     }
     ?>
 </head>
@@ -31,9 +31,9 @@ if (isset($message)) {
 ?>
 <form action="login.php" method="post">
     <label for="email">Email Address: </label>
-    <input type="email" id="email" name="email" placeholder="janedoe@example.com" required>
+    <input type="email" id="email" name="email" placeholder="janedoe@example.com" required><br/>
     <label for="password">Password: </label>
-    <input type="password" id="password" name="password" placeholder="*********" required>
+    <input type="password" id="password" name="password" placeholder="*********" required><br/>
     <input type="submit" id="submit" name="submit" value="Log In">
 </form>
 <small><a href="register.php">Register for service</a>&nbsp;|&nbsp;<a href="#">Forgot Password</a></small>
