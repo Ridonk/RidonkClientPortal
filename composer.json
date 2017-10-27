@@ -3,7 +3,6 @@
     "description": "An open source solution for Client Management",
     "require": {
         "php": ">=7",
-        "joshcam/mysqli-database-class": "dev-master",
         "phpunit/phpunit": "6.5.x-dev"
     },
     "license": "MIT",
