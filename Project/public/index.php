@@ -7,8 +7,11 @@ require_once (__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' 
 <head>
     <title>CP Index</title>
     <?php
-    if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
-        header("login.php");
+    if (!isset($_SESSION['login'])) {
+        header("Location:login.php");
+        exit;
+    } elseif ($_SESSION['login'] != '') {
+        header("Location:login.php");
         exit;
     }
     ?>
