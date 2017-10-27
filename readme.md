@@ -9,7 +9,7 @@ Planned Features:
 * Easily extensible classes to add new functionality
 * Status dependent pages
     * Admin views
-    * Active cWlient views
+    * Active client views
     * Pending client views
 * Option to store client details hashed and salted
 * Easy to manage a full list of clients
