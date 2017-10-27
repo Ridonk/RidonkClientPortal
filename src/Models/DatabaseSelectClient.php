@@ -46,7 +46,6 @@ class DatabaseSelectClient {
     /**
      * @param $email
      * @param \PDO $connect
-     * @param int $debug
      * @return bool
      */
     public static function getFirstNameWhereEmailMatches($email, \PDO $connect) {
