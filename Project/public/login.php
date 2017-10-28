@@ -16,21 +16,23 @@ require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
     if (isset($_POST['email']) && isset($_POST['password'])) {
         $loginController = new \Ridonk\ClientPortal\Controllers\Login($_POST);
         if (!$loginController->checkLogin()) {
-            echo $loginController->getErrorMessage();
+            $message = $loginController->getErrorMessage();
         } else {
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['login'] = '';
             header('Location:index.php');
         }
-    } else {
-        $message = 'Please enter your email and password below or click "Register for service" below the form.<br />';
     }
     ?>
 </head>
 <body>
+<h1>Login</h1>
+<p>Login to the client portal using the form below. Enter your email address and password to do so. If you can't
+    remember your password click the forgot password button below. If you do not have an account yet click "Register for
+    service".</p>
 <?php
 if (isset($message)) {
-    echo $message . '<br />';
+    echo '<span class="warning">' . $message . '</span><br />';
 }
 ?>
 <form action="login.php" method="post">
