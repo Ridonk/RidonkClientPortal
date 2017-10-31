@@ -61,6 +61,23 @@ class DatabaseSelectClient {
     }
 
     /**
+     * @param $email
+     * @param \PDO $connect
+     * @return array|bool
+     */
+    public static function getClientWhereEmailMatches($email, \PDO $connect) {
+        $sql = 'SELECT firstname, lastname, email, status FROM client_db WHERE email = :email';
+        $stmt = $connect->prepare($sql);
+        $stmt->execute(array(':email' => $email));
+        if ($stmt->rowCount() > 0) {
+            $results = $stmt->fetchAll();
+            return $results;
+        } else {
+            return FALSE;
+        }
+    }
+
+    /**
      * @param \PDO $connect
      * @return array|bool
      */

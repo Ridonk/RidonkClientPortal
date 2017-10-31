@@ -7,23 +7,16 @@ require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
  * Date: 10/28/17
  * Time: 8:13 AM
  */
-
 ?>
     <!DOCTYPE html>
     <html>
     <head>
-        <title><?php echo 'UsernameHere'; ?></title>
+        <title>Profile Page</title>
     </head>
     <body>
     <?php
-    $dbh = new \Ridonk\ClientPortal\Models\Database();
-    $firstname = \Ridonk\ClientPortal\Models\DatabaseSelectClient::getFirstNameWhereEmailMatches($_SESSION['email'], $dbh->getConnect());
-    if ($firstname != FALSE) {
-        echo 'Hello ' . $firstname . '. <br />';
-    } else {
-        echo 'Something broke...';
-    }
-    echo '<a href="logout.php">Logout</a>';
+    $profileController = new \Ridonk\ClientPortal\Controllers\Profile($_SESSION);
+    $profileController->getProfile()->createBaseView();
     ?>
     </body>
     </html>
